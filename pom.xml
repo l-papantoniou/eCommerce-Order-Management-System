@@ -19,9 +19,9 @@
     <!-- Module Declaration                           -->
     <!-- ============================================ -->
     <modules>
-        <!--
+
          <module>common-lib</module>
-        <module>order-service</module>
+        <!--<module>order-service</module>
         <module>notification-service</module>
         <module>analytics-service</module>
         -->
