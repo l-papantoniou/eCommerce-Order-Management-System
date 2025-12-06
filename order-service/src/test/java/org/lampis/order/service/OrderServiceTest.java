@@ -41,7 +41,7 @@ import static org.mockito.Mockito.*;
  * Unit tests for OrderServiceImpl
  */
 @ExtendWith(MockitoExtension.class)
-class OrderServiceImplTest {
+class OrderServiceTest {
 
     @Mock
     private OrderRepository orderRepository;
