@@ -21,10 +21,7 @@
     <modules>
 
          <module>common-lib</module>
-        <!--<module>order-service</module>
-        <module>notification-service</module>
-        <module>analytics-service</module>
-        -->
+        <module>order-service</module>
     </modules>
 
     <!-- ============================================ -->
@@ -126,7 +123,7 @@
 
             <!-- Internal modules -->
             <dependency>
-                <groupId>com.ecommerce</groupId>
+                <groupId>org.lampis</groupId>
                 <artifactId>common-lib</artifactId>
                 <version>${project.version}</version>
             </dependency>
