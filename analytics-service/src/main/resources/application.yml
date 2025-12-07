@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: analytics-service
+
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: ecommerce_analytics
+      auto-index-creation: true
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        acknowledge-mode: auto
+        retry:
+          enabled: true
+          initial-interval: 1000
+          max-attempts: 3
+          multiplier: 2
+          max-interval: 10000
+        default-requeue-rejected: false
+
+server:
+  port: 8082
+
+logging:
+  level:
+    root: INFO
+    com.ecommerce.analytics: DEBUG
+    org.springframework.data.mongodb: DEBUG
+    org.springframework.amqp: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# Analytics settings
+analytics:
+  retention-days: 365  # Keep analytics data for 1 year
+  aggregation:
+    batch-size: 1000
