@@ -43,7 +43,8 @@ class OrderEventListenerTest {
                 100L,
                 OrderStatus.UNPROCESSED,
                 new BigDecimal("99.99"),
-                LocalDateTime.now()
+                LocalDateTime.now(),
+                java.util.Collections.emptyList() // Empty order lines for test
         );
 
         orderStatusChangedEvent = new OrderStatusChangedEvent(
