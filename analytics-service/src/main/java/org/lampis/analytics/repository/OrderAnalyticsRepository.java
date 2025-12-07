@@ -3,7 +3,6 @@ package org.lampis.analytics.repository;
 import org.lampis.analytics.model.OrderAnalytics;
 import org.lampis.common.enums.OrderStatus;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -41,9 +40,4 @@ public interface OrderAnalyticsRepository extends MongoRepository<OrderAnalytics
      */
     long countByStatus(OrderStatus status);
 
-    /**
-     * Find recent orders
-     */
-    @Query("{ 'orderDate': { $gte: ?0 } }")
-    List<OrderAnalytics> findRecentOrders(LocalDateTime since);
 }

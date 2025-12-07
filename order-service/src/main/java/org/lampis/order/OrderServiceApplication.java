@@ -7,10 +7,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 /**
  * Order Service Application
  */
-@SpringBootApplication(scanBasePackages = {
-        "com.ecommerce.order",
-        "com.ecommerce.common"
-})
+@SpringBootApplication
 @EnableScheduling
 public class OrderServiceApplication {
 

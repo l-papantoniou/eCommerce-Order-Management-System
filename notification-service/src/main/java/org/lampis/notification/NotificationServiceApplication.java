@@ -7,10 +7,7 @@ import org.springframework.retry.annotation.Retryable;
 /**
  * Notification Service Application
  */
-@SpringBootApplication(scanBasePackages = {
-        "com.ecommerce.notification",
-        "com.ecommerce.common"
-})
+@SpringBootApplication
 @Retryable
 public class NotificationServiceApplication {
 

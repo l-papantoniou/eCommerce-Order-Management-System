@@ -60,12 +60,6 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Flyway for database migrations -->
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
-        </dependency>
-
         <!-- OpenAPI Documentation -->
         <dependency>
             <groupId>org.springdoc</groupId>
