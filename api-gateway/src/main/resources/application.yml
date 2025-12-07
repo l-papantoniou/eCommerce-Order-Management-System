@@ -1,0 +1,106 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: api-gateway
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 2000ms
+
+  cloud:
+    gateway:
+      routes:
+        # Order Service Routes (Protected with Auth + Rate Limiting)
+        - id: order-service
+          uri: http://localhost:8080
+          predicates:
+            - Path=/api/v1/orders/**
+          filters:
+            - AuthenticationFilter
+            - name: RateLimitingFilter
+              args:
+                keyStrategy: USER    # Rate limit per authenticated user
+                capacity: 50         # 50 requests max
+                refillTokens: 50     # Add 50 tokens
+                refillDuration: 60   # Every 60 seconds (50 req/min per user)
+            - name: LoggingFilter
+              args:
+                logPrefix: "[ORDER]"
+                slowRequestThreshold: 1000  # Warn if > 1 second
+
+        # Analytics Service Routes (Protected with Auth + Rate Limiting)
+        - id: analytics-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/v1/analytics/**
+          filters:
+            - AuthenticationFilter
+            - name: RateLimitingFilter
+              args:
+                keyStrategy: USER
+                capacity: 100        # 100 requests max
+                refillTokens: 100    # Add 100 tokens
+                refillDuration: 60   # Every 60 seconds (100 req/min per user)
+            - name: LoggingFilter
+              args:
+                logPrefix: "[ANALYTICS]"
+                slowRequestThreshold: 2000  # Warn if > 2 seconds
+
+        # Notification Service Routes (Protected with Auth + Rate Limiting)
+        - id: notification-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/v1/notifications/**
+          filters:
+            - AuthenticationFilter
+            - name: RateLimitingFilter
+              args:
+                keyStrategy: USER
+                capacity: 30         # 30 requests max
+                refillTokens: 30     # Add 30 tokens
+                refillDuration: 60   # Every 60 seconds (30 req/min per user)
+            - name: LoggingFilter
+              args:
+                logPrefix: "[NOTIFICATION]"
+
+        # Public Health Check Route (No Auth, IP-based Rate Limiting)
+        - id: actuator-health
+          uri: http://localhost:8080
+          predicates:
+            - Path=/actuator/health
+          filters:
+            - name: RateLimitingFilter
+              args:
+                keyStrategy: IP      # Rate limit per IP address
+                capacity: 10         # 10 requests max
+                refillTokens: 10     # Add 10 tokens
+                refillDuration: 60   # Every 60 seconds
+            - name: LoggingFilter
+              args:
+                logPrefix: "[HEALTH]"
+
+# JWT Configuration
+jwt:
+  # JWKS endpoint from authorization server
+  jwks-uri: http://localhost:9000/oauth2/jwks
+
+  # Issuer URL from your authorization server
+  issuer: http://localhost:9000
+
+# Rate Limiting Configuration
+rate-limit:
+  enabled: true  # ENABLED - requires Redis running
+  default-capacity: 100
+  default-refill-tokens: 100
+  default-refill-duration: 60
+
+logging:
+  level:
+    org.lampis.gateway: DEBUG
+    org.springframework.cloud.gateway: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
