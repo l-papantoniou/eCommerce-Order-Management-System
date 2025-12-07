@@ -1,0 +1,27 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: notification-service
+  rabbitmq:
+    host: ${SPRING_RABBITMQ_HOST:rabbitmq}
+    port: ${SPRING_RABBITMQ_PORT:5672}
+    username: ${SPRING_RABBITMQ_USERNAME:guest}
+    password: ${SPRING_RABBITMQ_PASSWORD:guest}
+
+rabbitmq:
+  exchange:
+    order: order.exchange
+  queue:
+    notification-order-created: notification.order.created.queue
+    notification-status-changed: notification.order.status.changed.queue
+  routing-key:
+    order-created: order.created
+    order-status-changed: order.status.changed
+
+logging:
+  level:
+    com.ecommerce.notification: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

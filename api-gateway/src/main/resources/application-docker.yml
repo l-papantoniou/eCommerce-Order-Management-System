@@ -1,0 +1,65 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: api-gateway
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST:redis}
+      port: ${SPRING_DATA_REDIS_PORT:6379}
+  cloud:
+    gateway:
+      routes:
+        # Order Service Routes
+        - id: order-service
+          uri: ${ROUTE_ORDER_SERVICE_URI:http://order-service:8080}
+          predicates:
+            - Path=/api/v1/orders/**
+          filters:
+            - name: AuthenticationFilter
+            - name: RateLimitingFilter
+            - name: LoggingFilter
+
+        # Analytics Service Routes
+        - id: analytics-service
+          uri: ${ROUTE_ANALYTICS_SERVICE_URI:http://analytics-service:8082}
+          predicates:
+            - Path=/api/v1/analytics/**
+          filters:
+            - name: AuthenticationFilter
+            - name: RateLimitingFilter
+            - name: LoggingFilter
+
+        # Notification Service Routes
+        - id: notification-service
+          uri: ${ROUTE_NOTIFICATION_SERVICE_URI:http://notification-service:8081}
+          predicates:
+            - Path=/api/v1/notifications/**
+          filters:
+            - name: AuthenticationFilter
+            - name: RateLimitingFilter
+            - name: LoggingFilter
+
+        # Health Check Routes (no auth required)
+        - id: health-checks
+          uri: ${ROUTE_ORDER_SERVICE_URI:http://order-service:8080}
+          predicates:
+            - Path=/actuator/health
+          filters:
+            - name: RateLimitingFilter
+            - name: LoggingFilter
+
+jwt:
+  jwks-uri: ${JWT_JWKS_URI:http://authorization-server:9000/oauth2/jwks}
+  issuer: ${JWT_ISSUER:http://authorization-server:9000}
+
+rate-limit:
+  enabled: true
+
+logging:
+  level:
+    com.ecommerce.gateway: INFO
+    org.springframework.cloud.gateway: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
