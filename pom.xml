@@ -20,9 +20,10 @@
     <!-- ============================================ -->
     <modules>
         <module>common-lib</module>
+        <module>api-gateway</module>
         <module>order-service</module>
         <module>notification-service</module>
-       <module>analytics-service</module>
+        <module>analytics-service</module>
     </modules>
 
     <!-- ============================================ -->
