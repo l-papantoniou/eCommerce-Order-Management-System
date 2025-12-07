@@ -1,0 +1,82 @@
+# Maven build artifacts (exclude compiled code, but keep source)
+**/target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Maven metadata files
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+
+# Maven wrapper
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.classpath
+.project
+*.swp
+*.swo
+*~
+
+# Operating System files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Test reports
+test-output/
+coverage/
+
+# Documentation (exclude most, but keep README files)
+docs/
+*.md
+!README.md
+!**/README.md
+
+# Scripts (exclude helper scripts from root)
+/*.sh
+
+# Git files
+.git/
+.gitignore
+.gitattributes
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Environment files
+.env
+.env.*
+
+# Docker files at root only (not in subdirectories)
+/Dockerfile
+/.dockerignore
+/docker-compose.yml
+/docker-compose.*.yml
+
+# Test and build artifacts
+*.class
+*.jar
+*.war
+*.ear
