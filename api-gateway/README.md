@@ -2,7 +2,7 @@
 
 Production-ready Spring Cloud Gateway serving as the secure, centralized entry point for the eCommerce Order Management System microservices.
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Features](#features)
@@ -17,7 +17,7 @@ Production-ready Spring Cloud Gateway serving as the secure, centralized entry p
 
 ---
 
-## 🎯 Overview
+## Overview
 
 The API Gateway acts as a single entry point for all client requests to backend microservices. It handles cross-cutting concerns such as authentication, rate limiting, routing, and logging, allowing downstream services to focus on business logic.
 
@@ -30,40 +30,40 @@ The API Gateway acts as a single entry point for all client requests to backend 
 
 ---
 
-## ✨ Features
+## Features
 
-### 🔐 Authentication & Authorization
+### Authentication & Authorization
 - **JWT Token Validation** - Validates tokens offline using RSA public keys from JWKS endpoint
 - **User Context Extraction** - Extracts user ID, role, and email from tokens
 - **Header Propagation** - Forwards user information to downstream services via HTTP headers
 - **Proper Error Responses** - Returns 401/403 with JSON error messages
 
-### ⚡ Rate Limiting
+### Rate Limiting
 - **Token Bucket Algorithm** - Implemented via Bucket4j with Redis
 - **Multiple Strategies** - Per-user, per-IP, per-API-key, or global limiting
 - **Configurable Per Route** - Different limits for different services
 - **Distributed** - Redis-based storage works across multiple gateway instances
 - **Informative Headers** - Returns `X-RateLimit-*` headers with every response
 
-### 📊 Observability
+### Observability
 - **Request ID Generation** - Unique correlation ID for distributed tracing
 - **Detailed Logging** - Request/response logging with duration tracking
 - **Slow Request Detection** - Automatic warnings for requests exceeding thresholds
 - **Service-Specific Prefixes** - Easy log filtering by service ([ORDER], [ANALYTICS], etc.)
 
-### 🚦 Routing
+### Routing
 - **Path-Based Routing** - Routes requests based on URL patterns
 - **Load Balancing Ready** - Prepared for service discovery integration
 - **Fallback Support** - Circuit breaker fallback endpoints
 
-### ⚡ Performance
+### Performance
 - **Reactive & Non-Blocking** - Built on Spring WebFlux for high throughput
 - **Async Processing** - Handles thousands of concurrent connections
 - **Efficient Resource Usage** - Event-loop model minimizes thread overhead
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ### System Context
 
@@ -120,23 +120,23 @@ The API Gateway acts as a single entry point for all client requests to backend 
    Authorization: Bearer eyJhbGc...
    
 2. RequestIdFilter (Global)
-   ✅ Generates: X-Request-Id: abc-123-def-456
+    Generates: X-Request-Id: abc-123-def-456
    
 3. AuthenticationFilter
-   ✅ Validates JWT signature
-   ✅ Checks expiration
-   ✅ Extracts claims: userId, role, email
-   ✅ Adds headers: X-User-Id, X-User-Role, X-User-Email
-   ❌ Returns 401/403 if invalid
+    Validates JWT signature
+    Checks expiration
+    Extracts claims: userId, role, email
+    Adds headers: X-User-Id, X-User-Role, X-User-Email
+    Returns 401/403 if invalid
    
 4. RateLimitingFilter
-   ✅ Checks Redis bucket for user:123
-   ✅ Consumes 1 token (49 remaining)
-   ✅ Adds headers: X-RateLimit-Limit, X-RateLimit-Remaining
-   ❌ Returns 429 if exceeded
+    Checks Redis bucket for user:123
+    Consumes 1 token (49 remaining)
+    Adds headers: X-RateLimit-Limit, X-RateLimit-Remaining
+    Returns 429 if exceeded
    
 5. LoggingFilter
-   ✅ Logs: [ORDER] ==> [abc-123] POST /api/v1/orders
+    Logs: [ORDER] ==> [abc-123] POST /api/v1/orders
    
 6. Forward to Order Service
    POST http://localhost:8080/api/v1/orders
@@ -150,7 +150,7 @@ The API Gateway acts as a single entry point for all client requests to backend 
 7. Order Service processes request
    
 8. LoggingFilter (Post-processing)
-   ✅ Logs: [ORDER] <== [abc-123] - Status: 201 - Duration: 523ms
+    Logs: [ORDER] <== [abc-123] - Status: 201 - Duration: 523ms
    
 9. Response returned to client
    Status: 201 Created
@@ -163,7 +163,7 @@ The API Gateway acts as a single entry point for all client requests to backend 
 
 ---
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before running the API Gateway, ensure you have:
 
@@ -188,7 +188,7 @@ Before running the API Gateway, ensure you have:
 
 ---
 
-## 🚀 Installation
+##  Installation
 
 ### 1. Clone the Repository
 
@@ -365,7 +365,7 @@ curl http://localhost:8090/actuator/health
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Basic Routing Test
 
@@ -424,7 +424,7 @@ curl -v -H "Authorization: Bearer $TOKEN" \
 
 ---
 
-## 📊 Monitoring
+## Monitoring
 
 ### Health Check
 
@@ -457,7 +457,7 @@ curl http://localhost:8090/actuator/gateway/routes | jq
 Authenticated user: user-123 (role: ROLE_USER) for path: /api/v1/orders
 
 # Rate limiting:
-✅ Rate limit passed - Key: user:123, Remaining: 49/50
+Rate limit passed - Key: user:123, Remaining: 49/50
 
 # Response logging:
 [ORDER] <== [abc-123] POST /api/v1/orders - Status: 201 - Duration: 523ms
@@ -484,7 +484,7 @@ MONITOR
 
 ---
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Issue: "Cannot initialize JWT validation"
 
@@ -550,7 +550,7 @@ filters:
 
 ---
 
-## 📚 Project Structure
+## Project Structure
 
 ```
 api-gateway/
@@ -604,7 +604,7 @@ api-gateway/
 
 ---
 
-## 📄 Additional Documentation
+## Additional Documentation
 
 - **[API_GATEWAY_SECURITY_CONFIG.md](../API_GATEWAY_SECURITY_CONFIG.md)** - Detailed security configuration guide
 - **[API_GATEWAY_TESTING_GUIDE.md](../API_GATEWAY_TESTING_GUIDE.md)** - Comprehensive testing scenarios
@@ -612,29 +612,29 @@ api-gateway/
 
 ---
 
-## 🎯 Summary
+## Summary
 
 ### Features:
-- ✅ JWT Authentication (offline with JWKS)
-- ✅ Token Bucket Rate Limiting (per user/IP)
-- ✅ Request ID Correlation
-- ✅ Request/Response Logging
-- ✅ Error Handling
-- ✅ Circuit Breaker Support
+- JWT Authentication (offline with JWKS)
+- Token Bucket Rate Limiting (per user/IP)
+- Request ID Correlation
+- Request/Response Logging
+- Error Handling
+- Circuit Breaker Support
 
 ### Routes:
-- ✅ Order Service - 50 req/min per user
-- ✅ Analytics Service - 100 req/min per user
-- ✅ Notification Service - 30 req/min per user
-- ✅ Health Check - 10 req/min per IP (no auth)
+- Order Service - 50 req/min per user
+- Analytics Service - 100 req/min per user
+- Notification Service - 30 req/min per user
+- Health Check - 10 req/min per IP (no auth)
 
 ### Requirements:
-- ✅ Redis (port 6379)
-- ✅ Authorization Server (port 9000)
-- ✅ Backend Services (8080, 8081, 8082)
+- Redis (port 6379)
+- Authorization Server (port 9000)
+- Backend Services (8080, 8081, 8082)
 
 ---
 
 **Version:** 1.0-SNAPSHOT  
 **Port:** 8090  
-**Status:** ✅ Production Ready
+**Status:** Production Ready
