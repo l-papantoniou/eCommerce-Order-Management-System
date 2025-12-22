@@ -397,7 +397,7 @@ mvn test
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ecommerce-order-management-system/
@@ -425,7 +425,7 @@ ecommerce-order-management-system/
 
 ---
 
-## 🔧 Configuration
+## Configuration
 
 ### Service Ports
 
