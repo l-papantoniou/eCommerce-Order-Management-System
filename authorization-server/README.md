@@ -2,7 +2,7 @@
 
 Production-ready OAuth 2.0 Authorization Server with OpenID Connect (OIDC) support, providing secure authentication and JWT token generation for the eCommerce Order Management System.
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Features](#features)
@@ -19,7 +19,7 @@ Production-ready OAuth 2.0 Authorization Server with OpenID Connect (OIDC) suppo
 
 ---
 
-## 🎯 Overview
+## Overview
 
 The Authorization Server is the authentication hub for the entire microservices ecosystem. It issues secure JWT tokens that are validated by the API Gateway, enabling stateless, scalable authentication across all services.
 
@@ -32,9 +32,9 @@ The Authorization Server is the authentication hub for the entire microservices 
 
 ---
 
-## ✨ Features
+## Features
 
-### 🔐 OAuth 2.0 & OpenID Connect
+### OAuth 2.0 & OpenID Connect
 - **OAuth 2.0 Authorization Server** - Complete protocol implementation
 - **OpenID Connect 1.0** - Identity layer for user authentication
 - **JWT Tokens** - RS256 algorithm with 2048-bit RSA keys
@@ -42,27 +42,27 @@ The Authorization Server is the authentication hub for the entire microservices 
 - **Token Introspection** - Check token validity and metadata
 - **Token Revocation** - Invalidate tokens before expiration
 
-### 🎫 Grant Types Supported
+### Grant Types Supported
 - **Client Credentials** - Machine-to-machine authentication
 - **Authorization Code** - Secure user authentication via browser
 - **Authorization Code + PKCE** - Enhanced security for mobile/SPA
 - **Refresh Token** - Long-lived sessions without re-authentication
 
-### 🔒 Security Features
+### Security Features
 - **RSA Signing** - 2048-bit keys for JWT signatures
 - **BCrypt Password Hashing** - Secure password storage (strength 10)
 - **PKCE Support** - Proof Key for Code Exchange for public clients
 - **Scope-Based Authorization** - Fine-grained permission control
 - **Token Customization** - Additional claims in JWT payload
 
-### 🔗 Integration Ready
+### Integration Ready
 - **API Gateway Compatible** - JWKS endpoint for offline validation
 - **Microservices Ready** - Standard OAuth2/OIDC protocols
 - **Spring Security Native** - Seamless Spring ecosystem integration
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ### System Context
 
@@ -122,7 +122,7 @@ The Authorization Server is the authentication hub for the entire microservices 
 
 ---
 
-## 📋 Prerequisites
+## Prerequisites
 
 - **Java 21+** - Programming language runtime
 - **Maven 3.9+** - Build tool
@@ -130,7 +130,7 @@ The Authorization Server is the authentication hub for the entire microservices 
 
 ---
 
-## 🚀 Installation
+## Installation
 
 ### 1. Navigate to Module
 
@@ -167,7 +167,7 @@ curl http://localhost:9000/oauth2/jwks
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 ### Main Configuration File
 
@@ -202,7 +202,7 @@ logging:
 
 ---
 
-## 👥 OAuth2 Clients
+## OAuth2 Clients
 
 ### 1. API Gateway Client (Client Credentials)
 
@@ -252,7 +252,7 @@ Scopes: admin.read, admin.write, user.manage
 
 ---
 
-## 🔐 Users & Credentials
+## Users & Credentials
 
 ### 1. Admin User
 ```
@@ -277,7 +277,7 @@ Roles: USER
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Get Token (Client Credentials)
 
@@ -306,7 +306,7 @@ echo $TOKEN | cut -d '.' -f 2 | base64 -d | jq
 
 ---
 
-## 🔗 Integration
+## Integration
 
 ### With API Gateway
 
@@ -335,7 +335,7 @@ X-Authenticated: true
 
 ---
 
-## 📊 Monitoring
+## Monitoring
 
 ### Health Check
 
@@ -351,7 +351,7 @@ curl http://localhost:9000/.well-known/oauth-authorization-server | jq
 
 ---
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Issue: "Invalid client credentials"
 - Verify client ID and secret
@@ -366,7 +366,7 @@ curl http://localhost:9000/.well-known/oauth-authorization-server | jq
 
 ---
 
-## 📚 Project Structure
+## Project Structure
 
 ```
 authorization-server/
@@ -389,7 +389,7 @@ authorization-server/
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
@@ -402,7 +402,7 @@ authorization-server/
 
 ---
 
-## 📄 Key Endpoints
+## Key Endpoints
 
 | Endpoint | Purpose |
 |----------|---------|
@@ -417,24 +417,24 @@ authorization-server/
 
 ---
 
-## ✅ Summary
+## Summary
 
 ### Features:
-- ✅ OAuth 2.0 Authorization Server
-- ✅ OpenID Connect (OIDC)
-- ✅ JWT tokens (RS256)
-- ✅ JWKS endpoint
-- ✅ 4 OAuth2 clients
-- ✅ 3 demo users
+- OAuth 2.0 Authorization Server
+- OpenID Connect (OIDC)
+- JWT tokens (RS256)
+- JWKS endpoint
+- 4 OAuth2 clients
+- 3 demo users
 
 ### Clients:
-1. ✅ ecommerce-api-gateway (client_credentials)
-2. ✅ ecommerce-web-app (authorization_code)
-3. ✅ ecommerce-mobile-app (authorization_code + PKCE)
-4. ✅ ecommerce-admin (authorization_code)
+1. ecommerce-api-gateway (client_credentials)
+2. ecommerce-web-app (authorization_code)
+3. ecommerce-mobile-app (authorization_code + PKCE)
+4. ecommerce-admin (authorization_code)
 
 ---
 
 **Version:** 1.0-SNAPSHOT  
 **Port:** 9000  
-**Status:** ✅ Production Ready
+**Status:** Production Ready
