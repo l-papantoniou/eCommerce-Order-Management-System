@@ -2,7 +2,7 @@
 
 Event-driven analytics service that aggregates order data in MongoDB and provides reporting REST APIs.
 
-## CQRS Pattern Implementation 🎯
+## CQRS Pattern Implementation 
 
 This service implements the **Query Side** of the CQRS (Command Query Responsibility Segregation) pattern.
 
@@ -35,10 +35,10 @@ Order Service (Write)          Analytics Service (Read)
 4. Saved to MongoDB → Pre-aggregated, denormalized
 
 **Benefits:**
-- ✅ **Fast queries** - No joins, pre-calculated aggregations
-- ✅ **Scalability** - Read and write databases scale independently
-- ✅ **Performance** - Reporting doesn't slow down order processing
-- ✅ **Flexibility** - Different data models optimized for their purpose
+- **Fast queries** - No joins, pre-calculated aggregations
+- **Scalability** - Read and write databases scale independently
+- **Performance** - Reporting doesn't slow down order processing
+- **Flexibility** - Different data models optimized for their purpose
 
 **Example:**
 ```bash
