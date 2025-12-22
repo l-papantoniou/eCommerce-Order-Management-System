@@ -2,7 +2,7 @@
 
 A production-ready, distributed microservices system built with Spring Boot, demonstrating modern enterprise architecture patterns including CQRS, event-driven communication, OAuth 2.0 authentication, and API Gateway patterns.
 
-## 🎯 Overview
+## Overview
 
 This project showcases a complete microservices architecture for managing eCommerce orders, from creation to fulfillment. It implements industry-standard patterns and practices suitable for enterprise production environments.
 
@@ -17,7 +17,7 @@ This project showcases a complete microservices architecture for managing eComme
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -65,7 +65,7 @@ This project showcases a complete microservices architecture for managing eComme
 
 ---
 
-## 📦 Microservices
+##  Microservices
 
 ### 1. [Authorization Server](authorization-server/) (Port 9000)
 OAuth 2.0 Authorization Server providing secure authentication and JWT token generation.
@@ -133,33 +133,33 @@ Shared domain models, DTOs, and events used across all services.
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-### 🔐 Security
+### Security
 - **OAuth 2.0 Authentication** - Industry-standard authorization framework
 - **JWT Tokens** - Stateless authentication with RS256 signing
 - **API Gateway Security** - Centralized token validation and rate limiting
 - **Role-Based Access** - User permissions and scopes
 
-### 📊 CQRS Pattern
+### CQRS Pattern
 - **Write Side** - Order Service with PostgreSQL (normalized, ACID)
 - **Read Side** - Analytics Service with MongoDB (denormalized, optimized)
 - **Event Synchronization** - RabbitMQ bridges command and query models
 - **Performance** - 100x faster queries with pre-aggregated data
 
-### 🔄 Event-Driven Architecture
+### Event-Driven Architecture
 - **Async Communication** - Loose coupling between services
 - **RabbitMQ** - Reliable message delivery
 - **Event Types** - OrderCreated, OrderStatusChanged
 - **Retry Mechanisms** - Exponential backoff for failed processing
 
-### ⚡ Performance & Scalability
+### Performance & Scalability
 - **Stateless Services** - Horizontal scaling ready
 - **API Gateway Caching** - JWKS public key cached
 - **Read Model Optimization** - Pre-calculated aggregations
 - **Reactive Gateway** - Non-blocking I/O for high throughput
 
-### 🔍 Observability
+### Observability
 - **Request IDs** - Distributed tracing with correlation IDs
 - **Centralized Logging** - Structured logs with service prefixes
 - **Health Checks** - Spring Actuator endpoints
@@ -167,7 +167,7 @@ Shared domain models, DTOs, and events used across all services.
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### Core Technologies
 - **Java 21** - Latest LTS version
@@ -203,9 +203,9 @@ Shared domain models, DTOs, and events used across all services.
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
-### Option 1: Docker Compose (Recommended) 🐳
+### Option 1: Docker Compose (Recommended)
 
 **One-command deployment of the entire system:**
 
@@ -335,7 +335,7 @@ curl -H "Authorization: Bearer $TOKEN" \
 
 ---
 
-## 📊 System Flow Example
+## System Flow Example
 
 ### Creating an Order - End-to-End Flow
 
@@ -370,14 +370,14 @@ curl -H "Authorization: Bearer $TOKEN" \
 ```
 
 **Result:**
-- ✅ Order created in PostgreSQL (write model)
-- ✅ Analytics updated in MongoDB (read model) - ~50ms delay
-- ✅ Customer receives email notification
-- ✅ Request tracked with correlation ID
+- Order created in PostgreSQL (write model)
+- Analytics updated in MongoDB (read model) - ~50ms delay
+- Customer receives email notification
+- Request tracked with correlation ID
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Unit Tests
 ```bash
@@ -454,7 +454,7 @@ ecommerce-order-management-system/
 
 ---
 
-## 📖 Documentation
+## Documentation
 
 ### Service Documentation
 
@@ -473,7 +473,7 @@ The core business services (Order, Analytics, Notification) and Common Library c
 
 ---
 
-## 🎯 Design Patterns & Principles
+## Design Patterns & Principles
 
 ### Architectural Patterns
 - **Microservices Architecture** - Independent, deployable services
@@ -498,7 +498,7 @@ The core business services (Order, Analytics, Notification) and Common Library c
 
 ---
 
-## 🚦 Monitoring & Observability
+## Monitoring & Observability
 
 ### Health Checks
 
@@ -533,7 +533,7 @@ Structured logging with correlation IDs:
 
 ---
 
-## 🔒 Security Considerations
+## Security Considerations
 
 ### Production Recommendations
 
@@ -545,7 +545,7 @@ Structured logging with correlation IDs:
 
 ---
 
-## 📈 Performance Characteristics
+## Performance Characteristics
 
 ### Latency
 - **API Gateway Overhead**: < 10ms
@@ -561,21 +561,21 @@ Structured logging with correlation IDs:
 
 ---
 
-## ✅ Project Status
+## Project Status
 
-**Status**: ✅ **Production-Ready**
+**Status**: **Production-Ready**
 
 ### Completed Features
-- ✅ 6 Microservices (fully implemented)
-- ✅ OAuth 2.0 Authorization Server
-- ✅ API Gateway with authentication & rate limiting
-- ✅ CQRS pattern implementation
-- ✅ Event-driven architecture
-- ✅ 62 unit tests with high coverage
-- ✅ Comprehensive documentation
-- ✅ Error handling and retry mechanisms
-- ✅ Distributed tracing (correlation IDs)
-- ✅ Health checks and monitoring
+-  6 Microservices (fully implemented)
+-  OAuth 2.0 Authorization Server
+-  API Gateway with authentication & rate limiting
+-  CQRS pattern implementation
+-  Event-driven architecture
+-  62 unit tests with high coverage
+-  Comprehensive documentation
+-  Error handling and retry mechanisms
+-  Distributed tracing (correlation IDs)
+-  Health checks and monitoring
 
 ### Architecture Highlights
 - **Modern Stack**: Java 21, Spring Boot 3.5.7, Spring Cloud
@@ -586,7 +586,7 @@ Structured logging with correlation IDs:
 
 ---
 
-**Built with ❤️ using Spring Boot and modern microservices patterns**
+**Built using Spring Boot and modern microservices patterns**
 
 **Version**: 1.0-SNAPSHOT  
 **Last Updated**: December 2025
