@@ -269,7 +269,7 @@ mvn spring-boot:run -Dspring.profiles.active=prod
 
 ---
 
-## 🔒 Routes & Security
+## Routes & Security
 
 ### Protected Routes (Authentication + Rate Limiting)
 
@@ -601,14 +601,6 @@ api-gateway/
 | Project Reactor | 3.6.x | Reactive Programming |
 | Lombok | 1.18.x | Boilerplate Reduction |
 | Maven | 3.9+ | Build Tool |
-
----
-
-## Additional Documentation
-
-- **[API_GATEWAY_SECURITY_CONFIG.md](../API_GATEWAY_SECURITY_CONFIG.md)** - Detailed security configuration guide
-- **[API_GATEWAY_TESTING_GUIDE.md](../API_GATEWAY_TESTING_GUIDE.md)** - Comprehensive testing scenarios
-- **[API_GATEWAY_COMPLETE.md](../API_GATEWAY_COMPLETE.md)** - Implementation summary
 
 ---
 
