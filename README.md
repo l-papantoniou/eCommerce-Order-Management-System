@@ -492,7 +492,6 @@ The core business services (Order, Analytics, Notification) and Common Library c
 ### Integration Patterns
 - **Event Sourcing** - Events as first-class citizens
 - **Eventual Consistency** - Accept slight delays for performance
-- **Circuit Breaker** - Graceful degradation on failures
 - **Retry Pattern** - Exponential backoff for transient failures
 - **Idempotency** - Safe retry of operations
 
